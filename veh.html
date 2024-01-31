@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetroMovers Vehicle Selection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>MetroMovers Vehicle Selection</h2>
+
+    <form>
+        <label for="vehicleType">Select Vehicle Type:</label>
+        <select id="vehicleType" name="vehicleType" required>
+            <option value="small">Small van</option>
+            <option value="medium van">Medium van</option>
+            <option value="pickup">pickup</option>
+            <option value="lorry">lorry</option>
+            <option value="Truck">Truck</option>
+        </select>
+
+        <label for="price">Price :</label>
+        <input type="text" id="price" name="price" readonly>
+
+        <label for="maxDistance">Maximum Distance (in km):</label>
+        <input type="text" id="maxDistance" name="maxDistance" readonly>
+
+        <button type="button" onclick="selectVehicle()">Select Vehicle</button>
+    </form>
+
+    <script>
+        function selectVehicle() {
+            // Dummy data for vehicle options (replace with actual data from your system)
+            const vehicleOptions = {
+                small van: { price: 'kshs100,000.00', maxDistance: '200' },
+                medium van: { price: 'kshs150,000.00', maxDistance: '300' },
+                pickup: { price: 'kshs200,000.00', maxDistance: '400' },
+                lorry: { price: 'kshs300,000.00', maxDistance: '500' },
+                Truck: { price: 'kshs500,000.00', maxDistance: '700' }
+            };
+
+
+            // Get selected vehicle type
+            const selectedVehicleType = document.getElementById('vehicleType').value;
+
+            // Display corresponding price and max distance
+            document.getElementById('price').value = vehicleOptions[selectedVehicleType].price;
+            document.getElementById('maxDistance').value = vehicleOptions[selectedVehicleType].maxDistance;
+        }
+    </script>
+
+</body>
+</html>
