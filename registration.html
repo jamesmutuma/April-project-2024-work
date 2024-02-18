@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
+    <title>User Registration</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -22,7 +22,7 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 300px;
-            text-align: center;
+            text-align: left;
         }
 
         input {
@@ -35,7 +35,7 @@
         }
 
         button {
-            background-color: #4caf50;
+          background-color:green;
             color: white;
             padding: 10px 15px;
             margin: 8px 0;
@@ -52,18 +52,29 @@
 <body>
 
     <form>
-        <h2>login</h2>
-<label for="email">Email</label>
+        <h2>User Registration</h2>
+
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+<label for="phone number">phone number</label>
+        <input type="text" id="phone number" name="phonenumber" required>
+
+
+        <label for="email">Email</label>
         <input type="email" id="email" name="email" required>
 
         <label for="password">Password</label>
         <input type="password" id="password" name="password" required>
-<a href="homepage.html">login</a>
-<p> do not have an account?</p>
+
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+        <a href="homepage.html">register</a>
+<p> Already have an account?</p>
  <div class="container">
-<a href="registration.html">register</a>
+<a href="login.html">login</a>
 </div>
-</form>
+    </form>
+
+</body>
 </html>
-
-
