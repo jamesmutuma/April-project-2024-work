@@ -11,9 +11,12 @@
         }
 
         form {
-            max-width: 600px;
-            margin: auto;
-background-color:white;
+            background-color: default;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
         }
 
         label {
@@ -58,8 +61,8 @@ background-color:white;
 
         <label for="distance">Distance (in km):</label>
         <input type="number" id="distance" name="distance" required>
-
-        <a href="payment.html">make booking</a>
+        <button onclick="window.location.href='payment.html'" name="make booking">Making booking</button>
+        
     </form>
 
     <p>Your Booking Number: <span id="bookingNumber"></span></p>

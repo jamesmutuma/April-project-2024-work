@@ -48,32 +48,33 @@
     <form>
         <label for="vehicleType">Select Vehicle Type:</label>
         <select id="vehicleType" name="vehicleType" required>
-            <option value="small">Small van</option>
-            <option value="medium van">Medium van</option>
+            <option value="small">Small_van</option>
+            <option value="medium van">Medium_van</option>
             <option value="pickup">pickup</option>
             <option value="lorry">lorry</option>
             <option value="Truck">Truck</option>
         </select>
 
         <label for="price">Price :</label>
-        <input type="text" id="price" name="price" readonly>
+        <input type="text" id="price" name="price" required>
 
         <label for="maxDistance">Maximum Distance (in km):</label>
-        <input type="text" id="maxDistance" name="maxDistance" readonly>
-
-        <a href="newbooking.html">select vehicle</a>
+        <input type="text" id="maxDistance" name="maxDistance" required >
+        <button onclick="window.location.href='newbooking.html'; ">SELECT VEHICLE </button>
     </form>
-
-    <script>
+       
+<script>
         function selectVehicle() {
             // Dummy data for vehicle options (replace with actual data from your system)
             const vehicleOptions = {
-                small van: { price: 'kshs100,000.00', maxDistance: '200' },
-                medium van: { price: 'kshs150,000.00', maxDistance: '300' },
+                small_van: { price: 'kshs100,000.00', maxDistance: '200' },
+                medium_van: { price: 'kshs150,000.00', maxDistance: '300' },
                 pickup: { price: 'kshs200,000.00', maxDistance: '400' },
                 lorry: { price: 'kshs300,000.00', maxDistance: '500' },
                 Truck: { price: 'kshs500,000.00', maxDistance: '700' }
             };
+
+            
 
 
             // Get selected vehicle type
