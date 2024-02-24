@@ -8,11 +8,10 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-image: url(images/bgimage.jpeg);
-           background-size: cover;
-           background-attachment: fixed;
+            background-image: url(images/bgimage.png);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
         .main-container{
             max-width: 800px;
@@ -21,12 +20,13 @@
             text-align: center;  
         }
         .container {
-            max-width: 20px;
+            max-width: 200px;
             margin: 50px auto;
             text-align: center;
         }
         h1 {
             color: #333;
+            text-align: center;
         }
         .options {
             display: flex;
@@ -50,9 +50,34 @@
         .about-us{
             height: 200px;
             width: 500px;
-            background-color: default;
+            margin-top: 8px;
+            background-color:lightgray;
             padding: 5px;
-            margin-left: 5px;
+            margin-left: 100px;
+            border-radius: 5px;
+            float: left;
+            
+        }
+        .vision{
+            height: 200px;
+            width: 500px;
+            margin-top: 8px;
+            background-color:lightgray;
+            padding: 5px;
+            margin-right: 100px;
+            border-radius: 5px;
+            float: right;
+            
+        }
+        .contacts{
+            height: 200px;
+            width: 500px;
+            margin-top: 8px;
+            background-color:lightgray;
+            padding: 5px;
+            margin-left: 100px;
+            border-radius: 5px;
+            float:inline-start;
             
         }
     </style>
@@ -61,29 +86,53 @@
     
         
         <div class="container">
-            
+        </div class="title-name">
             <h1>MetroMovers Transport System</h1>
-    
+    </div>
     
             <div class="options">
                 <a href="service.html">Service</a>
                 <a href="payment.html">Payment</a>
                 <a href="vehicles_available.html">Vehicle</a>
                 <a href="registration.html">registration</a>
+                 <a href="login.html">
+                    <span class="material-symbols-outlined">
+                        logout
+                        </span>
+                    logout</a>
+                 
+                
+
             </div>
         </div>
         <div class="about-us">
             <p style="color:blue; font-weight:bold;">About us</p>
-            <P>The inventory management solution for MetroMovers Transport System is specifically designed to efficiently transport farm products from one location to another. With our comprehensive system, farmers can easily track and manage their inventory, ensuring that their products are delivered safely and on time. From monitoring stock levels to optimizing delivery routes, our solution provides farmers with the tools they need to streamline their operations and maximize productivity. With MetroMovers, transporting farm products has never been easier.</p>
+            <P style=color:black>The inventory management solution for MetroMovers Transport System is specifically designed to efficiently transport farm products from one location to another. With our comprehensive system, farmers can easily track and manage their inventory, ensuring that their products are delivered safely and on time. From monitoring stock levels to optimizing delivery routes, our solution provides farmers with the tools they need to streamline their operations and maximize productivity. With MetroMovers, transporting farm products has never been easier.</p>
+        
+        </div>
+        <div class="vision">
+            <p style="color:blue; font-weight:bold;">Our Vision</p>
+            <P style=color:black>"Our vision for the inventory management solution for MetroMovers Transport System is to create a seamless, efficient, and transparent system that optimizes inventory tracking, minimizes waste, and maximizes operational efficiency. By implementing cutting-edge technology and robust analytics, we aim to provide real-time insights, streamline processes, and ultimately enhance customer satisfaction through timely and accurate deliveries."
+                </p>
         
         </div>
     
     
-        <div>
+        <div class='contacts'>
             <p style="color:blue; font-weight:bold;">contact us</p>
-            <span class="material-symbols-outlined">
+            <div> <span class="material-symbols-outlined">
                 call
-                </span> 0768949263
+                </span> 0768949263</div>
+           <div>
+            <span class="material-symbols-outlined">
+                email
+                </span>
+           </div>
+           <div>
+            <span class="material-symbols-outlined">
+                whatsapp
+                </span>
+           </div>   
         </div>
     
     
