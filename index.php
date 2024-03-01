@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -89,51 +93,5 @@
         </div class="title-name">
             <h1>MetroMovers Transport System</h1>
     </div>
-    
-            <div class="options">
-                <a href="service.html">Service</a>
-                <a href="payment.html">Payment</a>
-                <a href="vehicles_available.php">Vehicle</a>
-                <a href="registration.php">registration</a>
-                 <a href="login.php">
-                    <span class="material-symbols-outlined">
-                        logout
-                        </span>
-                    logout</a>
-                 
-                
+    </body>
 
-            </div>
-        </div>
-        <div class="about-us">
-            <p style="color:blue; font-weight:bold;">About us</p>
-            <P style=color:black>The inventory management solution for MetroMovers Transport System is specifically designed to efficiently transport farm products from one location to another. With our comprehensive system, farmers can easily track and manage their inventory, ensuring that their products are delivered safely and on time. From monitoring stock levels to optimizing delivery routes, our solution provides farmers with the tools they need to streamline their operations and maximize productivity. With MetroMovers, transporting farm products has never been easier.</p>
-        
-        </div>
-        <div class="vision">
-            <p style="color:blue; font-weight:bold;">Our Vision</p>
-            <P style=color:black>"Our vision for the inventory management solution for MetroMovers Transport System is to create a seamless, efficient, and transparent system that optimizes inventory tracking, minimizes waste, and maximizes operational efficiency. By implementing cutting-edge technology and robust analytics, we aim to provide real-time insights, streamline processes, and ultimately enhance customer satisfaction through timely and accurate deliveries."
-                </p>
-        
-        </div>
-    
-    
-        <div class='contacts'>
-            <p style="color:blue; font-weight:bold;">contact us</p>
-            <div> <span class="material-symbols-outlined">
-                call
-                </span> 0768949263</div>
-           <div>
-            <span class="material-symbols-outlined">
-                email
-                </span>
-           </div>
-           
-        </div>
-    
-    
-
-
-    
-</body>
-</html>
