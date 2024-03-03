@@ -1,3 +1,32 @@
+<?php
+include "connection.php";
+
+if(isset($_SESSION['user'])){
+  
+}
+//if (isset($_SESSION['usr_id']) || $row["role"] = 1){ 
+if(isset($_POST["login"]))
+{
+
+                                    $Email =$_POST["email"];
+                                    $Password =md5($_POST["password"]);
+
+                                     $sql = "SELECT * FROM re WHERE email ='$Email' AND password = '$Password'";
+                                    $result = $conn->query($sql);
+
+    // Check if result contains any rows
+                                    if ($result->num_rows == 1) {
+        // User exists, allow login
+        echo "<script>alert('Login successful!!');location.href='homepage.html';</script>";
+        // Redirect to dashboard or perform other actions
+    } else {
+        // User doesn't exist or incorrect credentials
+        echo"<script>alert('sorry. Login failed!!!');location.href='login.php';</script> ";
+        // You can redirect back to the login page or display an error message
+//}                          
+ }   
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,21 +80,24 @@
 </head>
 <body>
 
-    <form action="homepage.html" method="post" enctype="multipart/form-data">>
+    <form action="login.php" method="post" enctype="multipart/form-data">
         <h2>login</h2>
 <label for="email">Email</label>
         <input type="email" id="email" name="email" required>
 
         <label for="password">Password</label>
         <input type="password" id="password" name="password" required>
-        
-<button onclick="window.location.href='homepage.html';" >login</button>
+         <select id="member_role" name="member_role" required>
+            <option value="admin">Admin</option>
+            <option value="user">Users</option>
+        </select><br><br>
+        <input type="submit" name="login" value="login"></center>
 <p> do not have an account?</p>
  <div class="container">
-<button onclick="window.location.href='registration.php';">register</button>
+ <button onclick="window.location.href='registration.php';" name="register" >register</button>
 </div>
+
 </form>
 </body>
-</html>
 
 

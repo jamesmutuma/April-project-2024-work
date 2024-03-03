@@ -7,11 +7,11 @@ if(isset($_POST["register"]))
     $User =$_POST["username"];
     $Phoneno =$_POST["phonenumber"];
     $Email =$_POST["email"];
-    $Password =$_POST["password"];
-    $Confirmpassword =$_POST["confirmPassword"];
+    $Password =md5($_POST["password"]);
+    $Confirmpassword =md5($_POST["confirmPassword"]);
     //check if password match
-    if($password !==$confirmpassword){
-    echo "error:password do not match.";
+    if($Password !==$Confirmpassword){
+    echo "<script>alert('error:password do not match.');location.href='Registration.php'</script>";
     exit;
 }
 
@@ -104,6 +104,10 @@ if(isset($_POST["register"]))
 
         <label for="confirmPassword">Confirm Password</label>
         <input type="password" id="confirmPassword" name="confirmPassword" required>
+        <select id="member_role" name="member_role" required>
+            <option value="admin">Admin</option>
+            <option value="user">Users</option>
+        </select><br><br>
 
         <button onclick="window.location.href='homepage.html';" name="register" >register</button>
 <p> Already have an account?</p>
