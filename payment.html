@@ -55,35 +55,9 @@
         <label for="paymentMethod">Select Payment Method:</label>
         <select id="paymentMethod" name="paymentMethod" required>
             <option value="cash">Cash</option>
-            <option value="mpesa">M-Pesa</option>
         </select>
-
-        <div id="mpesaSteps" style="display: none;">
-            <p>For M-Pesa Payment:</p>
-            <ol>
-                <li>Go to M-Pesa on your phone.</li>
-                <li>Choose 'Lipa na M-Pesa'.</li>
-                <li>Go to 'Paybill' and enter <strong>222333</strong>.</li>
-                <li>Enter 'Account Number' as <strong>0768947263</strong>.</li>
-                <li>Enter the amount and complete the payment.</li>
-            </ol>
-        </div>
-
-        <button type="button" onclick="showPaymentSteps()">Proceed to Payment</button>
+<p>pay on delivery</p>
         <button type="submit" style="display: none;">Done</button>
     </form>
-
-    <script>
-        function showPaymentSteps() {
-            const paymentMethod = document.getElementById('paymentMethod').value;
-
-            if (paymentMethod === 'mpesa') {
-                document.getElementById('mpesaSteps').style.display = 'block';
-                document.querySelector('button[type="button"]').style.display = 'none';
-                document.querySelector('button[type="submit"]').style.display = 'block';
-            }
-        }
-    </script>
-
 </body>
 </html>

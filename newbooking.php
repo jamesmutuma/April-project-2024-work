@@ -2,32 +2,40 @@
 
 include "connection.php";
 
-if(isset($_POST["make_booking"]))
-{
-    $Description =$_POST["description"];
-    $Specificload =$_POST["specificLoad"];
-    $Quantity =$_POST["quantity"];
-    $Pickuppoint =$_POST["Pickup_point"];
-    $Destination =$_POST["Destination"];
-    $Distancecovered =$_POST["distance"];
-         
-                                            {
-      
-                                            $query=mysqli_query($conn,"INSERT INTO  newbooking VALUES('$Description',$Specificload,'$Quantity', '$Pickuppoint', '$Destination', 'Distancecovered')");
-                                                if($query)
-                                                {
-                                                    
-                                                    echo "<script>alert('Booking Successful!!');location.href='payment.html';</script>";
-                                                }
-                                                else
-                                                {
-                                                   echo "<script>alert('Booking failed!!');</script>"; 
-                                                }}
+if(isset($_POST["newbooking"])) {
+    $Description = $_POST["description"];
+    $Specificload = $_POST["specificLoad"];
+    $Quantity = $_POST["quantity"];
+    $Pickuppoint = $_POST["Pickuppoint"];
+    $Destination = $_POST["destination"];
+    $Distancecoverd = $_POST["distance"];
 
+    // Generate a unique booking number
+    $booking_number = uniqid('BK-');
 
+    // Store the booking number in a session variable
+    session_start();
+    $_SESSION['booking_number'] = $booking_number;
+
+    // Include your database connection file
+
+    // Prepare and execute the SQL query to insert data into the database
+    $query = "INSERT INTO newbooking  
+              VALUES ('$booking_number','$Description', '$Specificload', $Quantity, '$Pickuppoint', '$Destination', '$Distancecoverd')";
+
+    if(mysqli_query($conn, $query)) {
+        // Data inserted successfully
+        echo "<script>alert('Booking Successful!!'); location.href='payment.php';</script>";
+    } else {
+        // Error occurred while inserting data
+        echo "Error: " . mysqli_error($conn);
+        echo "<script>alert('Booking Failed!!');</script>";
+
+    }
 }
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -80,6 +88,7 @@ if(isset($_POST["make_booking"]))
     <h2>MetroMovers Booking</h2>
 
     <form action="newbooking.php" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="booking_number" value="<?php echo $booking_number; ?>">
         <label for="description">Description:</label>
         <input type="text" id="description" name="description" required>
 
@@ -89,15 +98,16 @@ if(isset($_POST["make_booking"]))
         <label for="quantity">Quantity:</label>
         <input type="number" id="quantity" name="quantity" required>
 
-        <label for="pickup_point">Pickup_point:</label>
-        <input type="text" id="Pickup_point" name="Pickup_point" required>
+        <label for="pickuppoint">Pickup_point:</label>
+        <input type="text" id="Pickuppoint" name="Pickuppoint" required>
 
         <label for="destinatio">Destination:</label>
-        <input type="text" id="Destination" name="Destination" required>
+        <input type="text" id="destination" name="destination" required>
 
         <label for="distance">Distance(in km):</label>
         <input type="number" id="distance" name="distance" required>
-        <button name="make_booking">Making booking</button>
+        <button name="newbooking" onclick="window.location.href='payment.html'">Making booking</button>
+     
         
     </form>
 
@@ -105,4 +115,3 @@ if(isset($_POST["make_booking"]))
 
    
 </body>
-</html>

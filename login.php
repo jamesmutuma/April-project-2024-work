@@ -8,10 +8,10 @@ if(isset($_SESSION['user'])){
 if(isset($_POST["login"]))
 {
 
-                                    $Email =$_POST["email"];
-                                    $Password =md5($_POST["password"]);
+                $Email =$_POST["email"];
+                $Password =md5($_POST["password"]);
 
-                                     $sql = "SELECT * FROM re WHERE email ='$Email' AND password = '$Password'";
+$sql = "SELECT * FROM re WHERE email ='$Email' AND password = '$Password'";
                                     $result = $conn->query($sql);
 
     // Check if result contains any rows
@@ -23,8 +23,8 @@ if(isset($_POST["login"]))
         // User doesn't exist or incorrect credentials
         echo"<script>alert('sorry. Login failed!!!');location.href='login.php';</script> ";
         // You can redirect back to the login page or display an error message
-//}                          
- }   
+}                          
+   
 }
 ?>
 <!DOCTYPE html>
@@ -87,17 +87,14 @@ if(isset($_POST["login"]))
 
         <label for="password">Password</label>
         <input type="password" id="password" name="password" required>
-         <select id="member_role" name="member_role" required>
-            <option value="admin">Admin</option>
-            <option value="user">Users</option>
-        </select><br><br>
-        <input type="submit" name="login" value="login"></center>
-<p> do not have an account?</p>
- <div class="container">
- <button onclick="window.location.href='registration.php';" name="register" >register</button>
-</div>
+     <button type="submit" name="login" >login</button>
+       
+<p> Already have an account?</p>
+// For the button to redirect you need to add button type button 
+<button type="button" onclick="window.location.href='registration.php';">Register</button>
 
 </form>
+
 </body>
 
 

@@ -16,8 +16,8 @@ if(isset($_POST["register"]))
 }
 
     $results=mysqli_query($conn,"SELECT * FROM re WHERE email='$Email'");
-                                            $email_check= mysqli_num_rows($results);
-                                            if($email_check==0)
+    $email_check= mysqli_num_rows($results);
+                                if($email_check==0)
                                             {
                                             $query=mysqli_query($conn,"INSERT INTO re VALUES(0,'$User',$Phoneno,'$Email', '$Password', '$Confirmpassword')");
                                                 if($query)

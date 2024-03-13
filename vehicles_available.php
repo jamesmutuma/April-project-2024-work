@@ -79,7 +79,7 @@
     <div id="vehicleDetails">   
     </div>
     <div>
-        <button onclick="window.location.href='newbooking.html'; ">SELECT VEHICLE </button>
+        <button onclick="window.location.href='newbooking.php'; ">SELECT VEHICLE </button>
     </div>
 
     <script>
