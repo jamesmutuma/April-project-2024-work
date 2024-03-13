@@ -2,39 +2,38 @@
 
 include "connection.php";
 
-if(isset($_POST["newbooking"])) {
-    $Description = $_POST["description"];
+if(isset($_POST["Update"])) {
+    $DescriptionPOST["description"];
     $Specificload = $_POST["specificLoad"];
     $Quantity = $_POST["quantity"];
     $Pickuppoint = $_POST["Pickuppoint"];
     $Destination = $_POST["destination"];
     $Distancecoverd = $_POST["distance"];
 
-    // Generate a unique booking number
-    $booking_number = uniqid('BK-');
-
-    // Store the booking number in a session variable
-    session_start();
-    $_SESSION['booking_number'] = $booking_number;
-
-    // Include your database connection file
-
     // Prepare and execute the SQL query to insert data into the database
-    $query = "INSERT INTO newbooking  
-              VALUES ('$booking_number','$Description', '$Specificload', $Quantity, '$Pickuppoint', '$Destination', '$Distancecoverd')";
 
-    if(mysqli_query($conn, $query)) {
+
+    $query=mysqli_query($conn,"UPDATE newbooking SET description='$Description',specificLoad='$Specificload',quantity='$Quantity',Pickuppoint='$Pickuppoint',destination='$Destination',distance='$Distancecoverd' WHERE $booking_number=1");
+
+    if($query) {
         // Data inserted successfully
-        echo "<script>alert('Booking Successful!!'); location.href='payment.php';</script>";
+        echo "<script>alert('Updated Successfully!!'); location.href='payment.php';</script>";
     } else {
         // Error occurred while inserting data
         echo "Error: " . mysqli_error($conn);
-        echo "<script>alert('Booking Failed!!');</script>";
+        echo "<script>alert('Update Failed!!');</script>";
 
     }
 }
+if(isset($_REQUEST["userid"])){
+$id=$_REQUEST["userid"];
+$query=mysqli_query($conn,"SELECT * FROM newbooking");
+$row=mysqli_fetch_assoc($query);
+
+}
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -70,11 +69,11 @@ if(isset($_POST["newbooking"])) {
         }
 
         button {
-            background-color: green;
+            background-color: blue;
             color: white;
-            padding: 10px 15px;
+            padding: 20px 30px;
             border: none;
-            border-radius: 4px;
+            border-radius: 3px;
             cursor: pointer;
         }
 
@@ -106,8 +105,7 @@ if(isset($_POST["newbooking"])) {
 
         <label for="distance">Distance(in km):</label>
         <input type="number" id="distance" name="distance" required>
-        <button name="newbooking" onclick="window.location.href='payment.php'">New Booking</button>
-        <button name="Update" onclick="window.location.href='edit_booking.php'">Update</button>
+        <button name="Update" onclick="window.location.href='payment.php'">UPDATE</button>
      
         
     </form>
