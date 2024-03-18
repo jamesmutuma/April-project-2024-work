@@ -89,8 +89,8 @@ $sql = "SELECT * FROM re WHERE email ='$Email' AND password = '$Password'";
         <input type="password" id="password" name="password" required>
      <button type="submit" name="login" >login</button>
        
-<p> Already have an account?</p>
-// For the button to redirect you need to add button type button 
+<p> don't have an account?</p>
+ 
 <button type="button" onclick="window.location.href='registration.php';">Register</button>
 
 </form>

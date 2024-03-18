@@ -89,6 +89,9 @@ if(isset($_POST["newbooking"])) {
 
     <form action="newbooking.php" method="post" enctype="multipart/form-data">
         <input type="hidden" name="booking_number" value="<?php echo $booking_number; ?>">
+
+        <label for="phonenumber">phonenumber:</label>
+        <input type="number" id="phonenumber" name="phonenumber" required>
         <label for="description">Description:</label>
         <input type="text" id="description" name="description" required>
 

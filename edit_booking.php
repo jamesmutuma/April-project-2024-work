@@ -3,34 +3,36 @@
 include "connection.php";
 
 if(isset($_POST["Update"])) {
-    $DescriptionPOST["description"];
+    $Description=$_POST["description"];
     $Specificload = $_POST["specificLoad"];
     $Quantity = $_POST["quantity"];
     $Pickuppoint = $_POST["Pickuppoint"];
     $Destination = $_POST["destination"];
     $Distancecoverd = $_POST["distance"];
 
-    // Prepare and execute the SQL query to insert data into the database
+    // Prepare and execute the SQL query to update data into the database
 
 
-    $query=mysqli_query($conn,"UPDATE newbooking SET description='$Description',specificLoad='$Specificload',quantity='$Quantity',Pickuppoint='$Pickuppoint',destination='$Destination',distance='$Distancecoverd' WHERE $booking_number=1");
+    $query=mysqli_query($conn,"UPDATE newbooking SET description='$Description',specificLoad='$Specificload',quantity='$Quantity',Pickuppoint='$Pickuppoint',destination='$Destination',distance='$Distancecoverd'");
 
     if($query) {
-        // Data inserted successfully
+        // Data updated successfully
         echo "<script>alert('Updated Successfully!!'); location.href='payment.php';</script>";
     } else {
-        // Error occurred while inserting data
+        // Error occurred while updating data
         echo "Error: " . mysqli_error($conn);
         echo "<script>alert('Update Failed!!');</script>";
 
     }
 }
-if(isset($_REQUEST["userid"])){
-$id=$_REQUEST["userid"];
+
+
+
+//if(isset($_REQUEST["userid"])){
+//$id=$_REQUEST["userid"];
 $query=mysqli_query($conn,"SELECT * FROM newbooking");
 $row=mysqli_fetch_assoc($query);
 
-}
 
 ?>
 
@@ -86,27 +88,20 @@ $row=mysqli_fetch_assoc($query);
 
     <h2>MetroMovers Booking</h2>
 
-    <form action="newbooking.php" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="booking_number" value="<?php echo $booking_number; ?>">
-        <label for="description">Description:</label>
-        <input type="text" id="description" name="description" required>
+    <form action="edit_booking.php" method="post" enctype="multipart/form-data">
+    <table >
+		<tr><td>Description:</td><td><input type="text" value="<?php echo $row["Description"]?>"name="description" required="" placeholder="enter your description"></td></tr>
+	    <tr><td>Specificload:</td><td><input type="text" value="<?php echo $row["Specificload"]?>" name="Specificload" required="" placeholder="enter your Specificload"></td></tr>
+	    <tr><td>Quatity:</td><td><input type="text" name="quantity" value="<?php echo $row["Quantity"]?>" placeholder="enter your quantity"></td></tr>
+	    <tr><td>pickuppoint:</td><td><input type="text" name="pickuppoint" value="<?php echo $row["Pickuppoint"]?>" placeholder="enter your Pickuppoint"></td></tr>
+	    	<tr><td>Destination:</td><td><input type="text" value="<?php echo $row["Destination"]; ?>" name="destination" placeholder="enter your destination"></td></tr>
+	    		<tr><td>Distancecovered:</td><td><input type="text" value="<?php echo $row["Distancecoverd"]?>"  name="distance" placeholder="enter your distance"></td></tr>
+	    		
+	    		<tr><td colspan="2"><input type="submit" name="update" value="update"></td></tr>
+	     	
+</table>
 
-        <label for="specificLoad">SpecificLoad:</label>
-        <input type="text" id="specificLoad" name="specificLoad" required>
-
-        <label for="quantity">Quantity:</label>
-        <input type="number" id="quantity" name="quantity" required>
-
-        <label for="pickuppoint">Pickup_point:</label>
-        <input type="text" id="Pickuppoint" name="Pickuppoint" required>
-
-        <label for="destinatio">Destination:</label>
-        <input type="text" id="destination" name="destination" required>
-
-        <label for="distance">Distance(in km):</label>
-        <input type="number" id="distance" name="distance" required>
-        <button name="Update" onclick="window.location.href='payment.php'">UPDATE</button>
-     
+        
         
     </form>
 
