@@ -2,26 +2,23 @@
 
 include "connection.php";
 
-if($_SERVER['REQUEST_METHOD']== 'POST'){
-	$vehicle_type = $_POST['vehicle_type'];
-    $distance = $_POST['distance'];
-    $max_load = $_POST['max_load'];
-    $fixed_price = $_POST['fixed_price'];
-       $query=mysqli_query($conn,"UPDATE new_vehicles SET vehicle_type=$vehicle_type,distance=$distance,max_load=$max_load,fixed_price=$fixed_price WHERE id=$id");
+if($_SERVER['REQUEST_METHOD']== 'GET'){
+	if (isset($_GET['update'])) {
+            $id = $_GET['update'];
+            $query=mysqli_query($conn,"SELECT vehicle_type,distance,max_load,fixed_price FROM new_vehicles WHERE id=$id");
+           //$row=mysqli_fetch_assoc($query);
 
-    if($query) {
-        // Data updated successfully
-        echo "<script>alert('Updated Successfully!!'); location.href='payment.php';</script>";
-    } else {
-        // Error occurred while updating data
-        echo "Error: " . mysqli_error($conn);
-        echo "<script>alert('Update Failed!!');</script>";
+           $query=mysqli_query($conn,"UPDATE new_vehicles SET vehicle_type=$vehicle_type,distance=$distance,max_load=$max_load,fixed_price=$fixed_price WHERE id=$id");
 
-    }
+            if(mysqli_query($conn, $query)) {
+                echo "<script>alert(Vehicle updated successfully.);</script>";
+            } else {
+                echo "Error: " . $query . "<br>" . $conn->error;
+            }
+        }
+	
 
-
-   $query=mysqli_query($conn,"SELECT * FROM new_vehicles WHERE id=$id");
-$row=mysqli_fetch_assoc($query);
+   
 
 }
 ?>
@@ -29,11 +26,16 @@ $row=mysqli_fetch_assoc($query);
 <!DOCTYPE html>
 <h1>Update vehicle</h1>
 
+    <form method="get" action="updatevehicle.php">
+       
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <form method="post" action="newvehicles.php">
-
-       <tr><td>vehicle_type:</td><td><input type="text" value="<?php echo $row["vehicle_type"]?>" name="vehicle_type"></td></tr>
+       <tr><td>vehicle_type:</td>
+       	<td>
+       		<input type="text" 
+       		value="<?php echo $row["vehicle_type"]?>" 
+       		name="vehicle_type">
+       	</td></tr>
+       
          
        <tr><td>Distance:</td><td><input type="number" value="<?php echo $row["distance"]?>" name="distance"></td></tr>
         	

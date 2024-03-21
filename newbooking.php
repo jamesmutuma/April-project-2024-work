@@ -3,6 +3,7 @@
 include "connection.php";
 
 if(isset($_POST["newbooking"])) {
+    $phonenumber = $_POST["phonenumber"];
     $Description = $_POST["description"];
     $Specificload = $_POST["specificLoad"];
     $Quantity = $_POST["quantity"];
@@ -21,7 +22,7 @@ if(isset($_POST["newbooking"])) {
 
     // Prepare and execute the SQL query to insert data into the database
     $query = "INSERT INTO newbooking  
-              VALUES ('$booking_number','$Description', '$Specificload', $Quantity, '$Pickuppoint', '$Destination', '$Distancecoverd')";
+              VALUES ('$phonenumber', '$booking_number','$Description', '$Specificload', $Quantity, '$Pickuppoint', '$Destination', '$Distancecoverd')";
 
     if(mysqli_query($conn, $query)) {
         // Data inserted successfully

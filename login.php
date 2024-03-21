@@ -93,6 +93,8 @@ $sql = "SELECT * FROM re WHERE email ='$Email' AND password = '$Password'";
  
 <button type="button" onclick="window.location.href='registration.php';">Register</button>
 
+<p>Admin button</p>
+<button type="button" onclick="window.location.href='admin.php';">Admin login</button>
 </form>
 
 </body>
