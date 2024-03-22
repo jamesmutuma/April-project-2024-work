@@ -44,17 +44,38 @@
                 <button type="submit"  name='add'>ADD</button>
                 
 
-    <h2>Vehicle List</h2>
-    <table>
-            <tr>
-            <th>Vehicle Type</th>
-            <th>Distance</th>
-            <th>Max Load</th>
-            <th>Fixed Price (KES)</th>
-            <th>Action</th>
-        </tr>
+</form>   
+<table>
+    <tr><th>Vehicle Type</th><th>Distance</th><th>Max Load</th><th>Fixed Price (KES)</th><th>Action</th></tr>
+    <?php
+      include "connection.php";
+    $query=mysqli_query($conn, "SELECT 'vehicle_type', distance, 'max_load', 'fixed_price FROM new_vehicles");
 
-    </table>
+   $i=1;
+    while ($query)
+    {
+    ?>
+    <td><?php echo $row["vehicle_type"];?></td>
+    <td><?php echo $row["distance"];?></td>
+    <td><?php echo $row["max_load"];?></td>
+    <td><?php echo $row["fixed _price"];?></td>
+    <td><a href='?delete=" . $row['id'] . "'>Delete</a>
+    <a href='updatevehicle.php?id=" . $row['id'] . "'>Update</a></td>";
+            
+        } else {
+
+            echo "<tr><td colspan='5'>No vehicles found.</td></tr>";
+        }
+
+            
+        <?php
+$i++;
+    }
+    ?>   
+   
+
+</table>
+
 
     </body>
 
@@ -90,13 +111,13 @@ if (isset($_POST['add'])) {
             $query = "DELETE FROM new_vehicles WHERE id=$id";
 
             if(mysqli_query($conn, $query)) {
-                echo "<script>alert(Vehicle deleted successfully.);</script>";
+                echo "<script>alert('Vehicle deleted successfully.');</script>";
             } else {
                 echo "Error: " . $query . "<br>" . $conn->error;
             }
         }
 
-        // Display the list of vehicles
+
         $sql = "SELECT id, vehicle_type, distance, max_load, fixed_price FROM new_vehicles";
         $result = $conn->query($sql);
 

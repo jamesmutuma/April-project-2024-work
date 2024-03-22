@@ -1,33 +1,39 @@
 <?php
+ include "connection.php";
 
-include "connection.php";
+if (isset($_POST['update'])) {
+            $vehicle_type = $_POST['vehicle_type'];
+            $distance = $_POST['distance'];
+            $max_load = $_POST['max_load'];
+            $fixed_price = $_POST['fixed_price'];
+            $id=$_POST["id"];
+                                            
 
-if($_SERVER['REQUEST_METHOD']== 'GET'){
-	if (isset($_GET['update'])) {
-            $id = $_GET['update'];
-            $query=mysqli_query($conn,"SELECT vehicle_type,distance,max_load,fixed_price FROM new_vehicles WHERE id=$id");
-           //$row=mysqli_fetch_assoc($query);
-
-           $query=mysqli_query($conn,"UPDATE new_vehicles SET vehicle_type=$vehicle_type,distance=$distance,max_load=$max_load,fixed_price=$fixed_price WHERE id=$id");
-
-            if(mysqli_query($conn, $query)) {
-                echo "<script>alert(Vehicle updated successfully.);</script>";
+                                            
+                $query=mysqli_query($conn,"UPDATE new_vehicles SET vehicle_type='$vehicle_type',distance=$distance,max_load=$max_load,fixed_price=$fixed_price WHERE id=$id");
+                                 if($query) {
+                echo "<script>alert('Vehicle updated successfully.');window.location.href='newvehicles.php';</script>";
             } else {
                 echo "Error: " . $query . "<br>" . $conn->error;
+                echo "<script>alert('Sorry, problem detected!!');</script>";
+
             }
         }
-	
-
-   
-
+    
+                                                
+                                            
+if(isset($_REQUEST["id"])){
+$id=$_REQUEST["id"];
+$query=mysqli_query($conn,"SELECT * FROM new_vehicles WHERE id=$id");
+$row=mysqli_fetch_assoc($query);
 }
 ?>
 
 <!DOCTYPE html>
-<h1>Update vehicle</h1>
 
-    <form method="get" action="updatevehicle.php">
-       
+<h2>Update vehicle</h2>
+<form method="post" action="updatevehicle.php" enctype="multipart/form-data">
+      <input type="hidden" value="<?php echo $row["id"]?>" name="id"> 
 
        <tr><td>vehicle_type:</td>
        	<td>
@@ -46,12 +52,13 @@ if($_SERVER['REQUEST_METHOD']== 'GET'){
 
         <div class="row mb-3">
         	<div class="offset-sm-3 col-sm-3 d-grid">
-        		<button type="submit">submit</button>
+        		<button type="submit" name="update">submit</button>
         	</div>
         	<div class="col-sm-3 d-grid">
         		<a class="btn btn-outline-primary" href="newvehicles.php" role="button">cancel</a>
         	</div>
         </div>
+    
     </form>
     </body>
     
