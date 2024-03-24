@@ -4,15 +4,15 @@
     <title>Vehicle Management</title>
    
    <style>
-
-    tr{
-    border:1px solid #ddd;
+table {
+   
+  border: 1px solid black;
+  width: 100%;
 }
- th{
-    background-color: #04aa6d;
-    color:white;
-    text-align: left;
-    border:1px;
+th, td{
+    width: 60px;
+    border: 1px solid black;
+
 }
 
 
@@ -23,7 +23,7 @@
 
     <h2>Add New Vehicle</h2>
     <form method="post" action="newvehicles.php">
-        
+    
             <label >vehicle_type</label>
             
                 <input type="text" name="vehicle_type" >
