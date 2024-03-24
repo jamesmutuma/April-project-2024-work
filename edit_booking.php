@@ -1,19 +1,24 @@
+
 <?php
 
 include "connection.php";
 
-if(isset($_POST["Update"])) {
+if(isset($_POST["update"])) {
+
     $Description=$_POST["description"];
-    $Specificload = $_POST["specificLoad"];
+    $Specificload = $_POST["Specificload"];
     $Quantity = $_POST["quantity"];
-    $Pickuppoint = $_POST["Pickuppoint"];
+    $Pickuppoint = $_POST["pickuppoint"];
     $Destination = $_POST["destination"];
     $Distancecoverd = $_POST["distance"];
+    $phonenumber = $_POST["phonenumber"];
+   
 
     // Prepare and execute the SQL query to update data into the database
 
 
-    $query=mysqli_query($conn,"UPDATE newbooking SET description='$Description',specificLoad='$Specificload',quantity='$Quantity',Pickuppoint='$Pickuppoint',destination='$Destination',distance='$Distancecoverd'");
+    $query=mysqli_query($conn,"UPDATE newbooking SET description='$Description',specificLoad='$Specificload',quantity='$Quantity',pickuppoint='$Pickuppoint',destination='$Destination' WHERE phonenumber=$phonenumber");
+   
 
     if($query) {
         // Data updated successfully
@@ -26,13 +31,11 @@ if(isset($_POST["Update"])) {
     }
 }
 
-
-
-//if(isset($_REQUEST["userid"])){
-//$id=$_REQUEST["userid"];
-$query=mysqli_query($conn,"SELECT * FROM newbooking");
+if(isset($_REQUEST["phonenumber"])){
+$phonenumber=$_REQUEST["phonenumber"];
+$query=mysqli_query($conn,"SELECT  phonenumber, Description, Specificload, Quantity, Pickuppoint,Destination,Distancecoverd FROM newbooking WHERE phonenumber=$phonenumber");
 $row=mysqli_fetch_assoc($query);
-
+}
 
 ?>
 
@@ -89,19 +92,22 @@ $row=mysqli_fetch_assoc($query);
     <h2>MetroMovers Booking</h2>
 
     <form action="edit_booking.php" method="post" enctype="multipart/form-data">
+         
     <table >
+        <tr><td>Phone:<input type="number" value="<?php echo $row["phonenumber"]?>" name="phonenumber"></td></tr>
+        
 		<tr><td>Description:</td><td><input type="text" value="<?php echo $row["Description"]?>"name="description" required="" placeholder="enter your description"></td></tr>
 	    <tr><td>Specificload:</td><td><input type="text" value="<?php echo $row["Specificload"]?>" name="Specificload" required="" placeholder="enter your Specificload"></td></tr>
 	    <tr><td>Quatity:</td><td><input type="text" name="quantity" value="<?php echo $row["Quantity"]?>" placeholder="enter your quantity"></td></tr>
 	    <tr><td>pickuppoint:</td><td><input type="text" name="pickuppoint" value="<?php echo $row["Pickuppoint"]?>" placeholder="enter your Pickuppoint"></td></tr>
 	    	<tr><td>Destination:</td><td><input type="text" value="<?php echo $row["Destination"]; ?>" name="destination" placeholder="enter your destination"></td></tr>
-	    		<tr><td>Distancecovered:</td><td><input type="text" value="<?php echo $row["Distancecoverd"]?>"  name="distance" placeholder="enter your distance"></td></tr>
+	    <tr><td>Distancecovered:</td><td><input type="number" value="<?php echo $row["Distancecoverd"]?>"  name="distance" placeholder="enter your distance"></td></tr>
 	    		
-	    		<tr><td colspan="2"><input type="submit" name="update" value="update"></td></tr>
+	    		
 	     	
 </table>
 
-        
+      <button type="submit" name="update" value="update">Update</button>  
         
     </form>
 
